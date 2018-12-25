@@ -78,13 +78,13 @@ def read_languages(lang1,lang2,reverse=False) :
 
 # trimming dataset to sentences of max of 10 words
 # so only sentences that start with below prefixes
-eng_prefixes = (
-    "i am ", "i m ",
-    "he is", "he s ",
-    "she is", "she s",
-    "you are", "you re ",
-    "we are", "we re ",
-    "they are", "they re ")
+# eng_prefixes = (
+#     "i am ", "i m ",
+#     "he is", "he s ",
+#     "she is", "she s",
+#     "you are", "you re ",
+#     "we are", "we re ",
+#     "they are", "they re ")
 
 max_length=10
 
@@ -364,7 +364,7 @@ def evaluate_random(encoder,decoder,n=10) :
 hidden_size=128
 encoder=EncoderRNN(ip_lang.num_words,hidden_size).to(device)
 attn_decoder=Attention(hidden_size,op_lang.num_words,dropout_prob=0.1).to(device)
-train_iters(encoder,attn_decoder,10000,steps_per_stats=500)
+train_iters(encoder,attn_decoder,100000,steps_per_stats=5000)
 
 evaluate_random(encoder,attn_decoder)
 
